@@ -1,0 +1,36 @@
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+data=pd.read_csv("/content/apple_products.csv")
+data
+data.head()
+data.isnull().sum()
+data.describe()
+Highest_rated=data.sort_values(by=["Star Rating"],ascending=False)
+Highest_rated
+Highest_rated.head(10)
+Highest_rated["Product Name"]
+Highest_rated
+data.head()
+iphones=Highest_rated["Product Name"].value_counts()
+label=iphones.index
+counts=Highest_rated["Number Of Ratings"]
+figure=px.bar(Highest_rated,x=label,y=counts)
+figure.show()
+iphones=Highest_rated["Product Name"].value_counts()
+label=iphones.index
+counts=Highest_rated["Number Of Ratings"]
+figure=px.bar(Highest_rated,x=label,y=counts)
+figure.show()
+data.head()
+figure=px.scatter(data_frame=data,x="Number Of Ratings",y="Sale Price",size="Discount Percentage",trendline="ols",title="relationship between sales price and number Of ratings")
+figure.show()
+figure=px.scatter(data_frame=data ,x="Number Of Ratings",
+                  y="Discount Percentage", size="Sale Price",
+                  trendline="ols",
+                  title="relationship between Sale Price and Number Of Ratings Of iPhones")
+figure.show()
+most_expensive=data.loc[data["Sale Price"].idxmax()]
+least_expensive=data.loc[data["Sale Price"].idxmin()]
+most_expensive
